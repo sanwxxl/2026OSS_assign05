@@ -15,16 +15,16 @@
             <legend>기본 정보</legend>
 
             <label for="name">게임 이름:</label><br>
-            <input type="text" id="name" placeholder="게임이름을 입력하세요" required>
+            <input type="text" id="name" placeholder="게임이름을 입력하세요" required maxlength="30">
             <br><br>
             <label for="company">제작사:</label><br>
             <input type="text" id="company" placeholder="제작사를 입력하세요" required>
             <br><br>
             <label for="price">가격:</label><br>
-            <input type="number" id="price" name="price" placeholder="(원)" required><br><br>
+            <input type="number" id="price" name="price" placeholder="(원)" required min="0"><br><br>
 
             <label for="playtime">플레이타임:</label><br>
-            <input type="number" id="playtime" name="playtime" placeholder="(시간)" required><br><br>
+            <input type="number" id="playtime" name="playtime" placeholder="(시간)" required min="0"><br><br>
             <br>
             <button type="button" id="btn1">추가</button>
         </fieldset>
@@ -113,6 +113,9 @@
         let editingId = null;
 
         btn1.addEventListener("click", function () {
+            if (!gameForm.reportValidity()) {
+                return;
+            }
             let name = nameInput.value;
             let company = companyInput.value;
             let price = Number(priceInput.value);
