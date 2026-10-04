@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    //방법4 : load 사용으로 body 위에 function
+    /*
+    function result(){
+        alert("Hello! World!!");
+    }
+    window.addEventListener("load", function(){
+        btn = document.querySelector("#btn");
+    btn.addEventListener("click", result);
+    });
+    */
+</script>
+</head>
+    
+<body>
+    
+    <button id="btn" onclick = "result()">Click Me!</button>
+</body>
+
+<script>
+    
+   
+    function result(){
+        alert("Hello! World!!");
+    }
+     /*방법 1: function 'result' body 아래에
+    btn = document.querySelector("#btn");
+    btn.addEventListener("click", result);
+    */
+
+    /* 방법 2: 빈 function
+   btn = document.querySelector("#btn");
+    btn.addEventListener("click", function(){
+        alert("Hello! World!!");
+    });
+    */
+
+   
+</script>
+</html>

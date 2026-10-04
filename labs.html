@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container {
+            width: 200px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 계산기 -->
+    <h3>덧셈 계산기</h3>
+    <input type = "text" id = "num1" size ="5">
+    <input type = "text" id = "num2" size ="5">
+    <button type = "button" id = "calculate">+</button>
+
+    <input type = "text" id = "result" size ="5" readonly>
+
+
+    <!-- innerHTML / innerText / textContent -->
+     <div id = "div1" onclick = "changeText()">Hello</div>
+
+
+     <!-- btn Click 이벤트-->
+    <hr />
+    <button id ="clickme1">Click Me!(alert)</button>
+    <button id ="clickme2">Click Me!(innerText)</button>
+    <button id ="clickme3">Click Me!(innerHTML)</button>
+    <div id ="clickResult">여기에 데이터가 바뀝니다!</div>
+
+    <hr />
+    <h3>동적요소 추가</h3>
+    <button id ="addbtn">동적요소 추가</button>
+    <div id ="container"></div>
+    <button id = "btnevent1">event1</button>
+
+    <hr />
+    <h3>요소 삭제</h3>
+    <button id ="delbtn">요소 삭제</button>
+    <div ></div>
+
+
+<script>
+    function changeText(){
+        document.getElementById("div1").innerHTML = "<h1>Hello World!</h1>";
+    }
+    
+    // 계산기 jS
+    const btn = document.querySelector("#calculate");
+    const num1 = document.querySelector("#num1");
+    const num2 = document.querySelector("#num2");
+    const result = document.querySelector("#result");
+    btn.addEventListener("click", function(){
+        
+    });
+
+    //load JS코드
+    window.addEventListener("load", function(){});
+        
+    //Click Event
+    const clickme1 = document.querySelector("#clickme1");
+    const clickme2 = document.querySelector("#clickme2");
+    const clickme3 = document.querySelector("#clickme3");
+    const clickResult = document.querySelector("#clickResult");
+
+    clickme1.addEventListener("click", function(){
+        alert("click1");
+    });
+
+    clickme2.addEventListener("click", function(b){
+        clickResult.textContent = "<h2>Click2</h2>";
+    });
+
+    clickme3.addEventListener("click", function(c){
+        clickResult.innerHTML = "<h3>Click3</h3>";
+    });
+
+    clickme1.addEventListener("mouseover", function(d){
+        alert("click1");
+    });
+
+    //동적요소 추가
+    const addbtn = document.querySelector("#addbtn");
+    const container = document.querySelector("#container");
+
+    container.textContent = "hello!";
+
+    addbtn.addEventListener("click", function(){
+        addbtn.appendChild(container);
+    });
+    
+    //요소 삭제
+
+</script>
+</body>
+</html>
