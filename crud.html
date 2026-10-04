@@ -16,13 +16,13 @@
                     <input type="text" id ="name" placeholder="게임이름을 입력하세요" required>
                     <br><br>
                     <label for="company">제작사:</label><br>
-                    <input type =text id ="company" placeholder="제작사를 입력하세요" required>
+                    <input type="text" id ="company" placeholder="제작사를 입력하세요" required>
                     <br><br>
                     <label for="price">가격:</label><br>
                     <input type="number" id="price" name="price" placeholder="(원)" required><br><br>
 
                     <label for="playtime">플레이타임:</label><br>
-                    <input type="text" id="playtime" name="playtime" placeholder ="(시간)" required><br><br>
+                    <input type="number" id="playtime" name="playtime" placeholder ="(시간)" required><br><br>
                     <br>
                     <button type="button" id="btn1">추가</button>
                 </fieldset>
@@ -73,6 +73,7 @@
 
         let gamelist = document.getElementById("gamelist");
 
+
 function render() {
     gamelist.innerHTML = "";
 
@@ -92,41 +93,51 @@ function render() {
     });
 }
 
-function editGame(id) {
-    alert(id + "번 게임 수정");
-}
-
-function deleteGame(id) {
-    alert(id + "번 게임 삭제");
-}
-
 render();
+
 let gameForm = document.getElementById("gameForm");
 let nameInput = document.getElementById("name");
 let companyInput = document.getElementById("company");
 let priceInput = document.getElementById("price");
 let playtimeInput = document.getElementById("playtime");
+
 let btn1 = document.getElementById("btn1");
+
 let nextId = games.length +1;
+
+let editingId = null;
 
 btn1.addEventListener("click", function () {
     let name = nameInput.value;
-    let company =companyInput.value;
+    let company = companyInput.value;
     let price = Number(priceInput.value);
     let playtime = Number(playtimeInput.value);
-    
 
-    games.push({
-    id: nextId,
-    name: name,
-    company: company,
-    price: price,
-    playtime: playtime
-});
-nextId++;
+    if (editingId === null) {
+        games.push({
+            id: nextId,
+            name: name,
+            company: company,
+            price: price,
+            playtime: playtime
+        });
+        nextId++;
+    } else {
+        let game = games.find(function (game) {
+            return game.id === editingId;
+        });
 
-render();
-gameForm.reset();
+        game.name = name;
+        game.company = company;
+        game.price = price;
+        game.playtime = playtime;
+
+        editingId = null;
+        btn1.textContent = "추가";
+    }
+
+    render();
+    gameForm.reset();
 });
 
 function deleteGame(id) {
@@ -137,6 +148,20 @@ function deleteGame(id) {
 
         render();
     }
+}
+
+function editGame(id) {
+    let game = games.find(function (game) {
+        return game.id === id;
+    });
+
+    nameInput.value = game.name;
+    companyInput.value = game.company;
+    priceInput.value = game.price;
+    playtimeInput.value = game.playtime;
+
+    editingId = id;
+    btn1.textContent = "저장";
 }
 
     </script>
