@@ -101,6 +101,33 @@ function deleteGame(id) {
 }
 
 render();
+let gameForm = document.getElementById("gameForm");
+let nameInput = document.getElementById("name");
+let companyInput = document.getElementById("company");
+let priceInput = document.getElementById("price");
+let playtimeInput = document.getElementById("playtime");
+let btn1 = document.getElementById("btn1");
+let nextId = games.length +1;
+
+btn1.addEventListener("click", function () {
+    let name = nameInput.value;
+    let company =companyInput.value;
+    let price = Number(priceInput.value);
+    let playtime = Number(playtimeInput.value);
+    
+
+    games.push({
+    id: nextId,
+    name: name,
+    company: company,
+    price: price,
+    playtime: playtime
+});
+nextId++;
+
+render();
+gameForm.reset();
+});
     </script>
 </body>
 </html>
